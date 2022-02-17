@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:journal_test/widgets/switch_widget.dart';
 
 
 class CustomDrawer extends StatefulWidget {
@@ -34,12 +35,18 @@ class _CustomDrawerState extends State<CustomDrawer> {
               child: Text("Settings")
             ),
           ),
-          ListTile(
-            title: const Text('Item 1'),
-            onTap: () {
-              // Update the state of the app.
-              // ...
-            },
+        Padding(
+          padding: EdgeInsets.all(16.0),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+
+              Text(
+                'Dark Mode'
+              ),
+              CustomSwitch()
+            ],
+          )
           )
         ],
       ),
