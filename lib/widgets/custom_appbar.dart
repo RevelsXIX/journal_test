@@ -20,17 +20,17 @@ class _CustomAppBarState extends State<CustomAppBar> {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-        title: Text(widget.text),
-        actions: <Widget>[
-          IconButton(
-            icon: Icon(
-              Icons.settings,
-              color: Colors.white,
-            ),
-            onPressed: () {
-              // do something
-            },
-          )
-        ]);
+        title: Text(widget.text));
+        // actions: <Widget>[
+        //   IconButton(
+        //     icon: Icon(
+        //       Icons.settings,
+        //       color: Colors.white,
+        //     ),
+        //     onPressed: () {
+        //       // do something
+        //     },
+        //   )
+        // ]);
   }
 }

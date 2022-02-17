@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:journal_test/widgets/custom_appbar.dart';
+import 'package:journal_test/widgets/drawer_widget.dart';
 
 
 class WelcomeScreen extends StatefulWidget {
@@ -25,6 +26,7 @@ class _WelcomeScreenState extends State<WelcomeScreen>{
       appBar: CustomAppBar(
         text: title,
       ),
+      endDrawer: CustomDrawer(),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
