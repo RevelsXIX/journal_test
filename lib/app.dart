@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'screens/welcome.dart';
-import 'models/custom_themes.dart';
 
 class App extends StatefulWidget {
 
@@ -29,12 +28,6 @@ class _AppState extends State<App> {
 
   @override
   Widget build(BuildContext context) {
-
-    // void setThemeState() async {
-    //   setState(() {
-    //     widget.preferences.setBool(darkModeKey, !darkMode);
-    //   });
-    // }
 
 
     return MaterialApp(
