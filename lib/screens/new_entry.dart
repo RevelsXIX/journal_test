@@ -27,6 +27,27 @@ class _NewEntryState extends State<NewEntry>{
         appBar: CustomAppBar(
           text: title
         ),
+        endDrawer: Drawer(
+
+            child: ListView(
+                padding: EdgeInsets.zero,
+                children: <Widget>[
+                  Container(
+                    height: 100.0,
+                    child: DrawerHeader(
+                        child: Text('Settings'),
+                        margin: EdgeInsets.all(5.0),
+                        padding: EdgeInsets.all(5.0)
+                    ),
+                  ),
+                  SwitchListTile(
+                      title: Text('Dark Mode'),
+                      value: widget.darkMode,
+                      onChanged: widget.toggleTheme)
+                  // onChanged: () {},
+                ]
+            )
+        ),
         body: Center(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
