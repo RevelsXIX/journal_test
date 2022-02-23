@@ -4,6 +4,8 @@ import 'package:journal_test/widgets/custom_appbar.dart';
 
 class WelcomeScreen extends StatefulWidget {
 
+  static const routeName = '/';
+
   final darkMode;
   final toggleTheme;
 

@@ -1,36 +1,25 @@
 import 'package:flutter/material.dart';
+import 'package:journal_test/widgets/custom_appbar.dart';
 
-class JournalEntriesScreen extends StatelessWidget {
+class JournalEntries extends StatefulWidget {
 
-  static const routeKey = 'journal_entries'
+  static const routeName = '/journal_entries';
 
-  final items = List<Map>.generate(10000, (i) {
-    return {
-    'title': 'Journal Entry $i',
-    'subtitle': 'Subtitle text for $i',
-    };
-  });
+  final darkMode;
+  final toggleTheme;
+
+  const JournalEntries({Key? key, this.darkMode, this.toggleTheme}) : super(key: key);
+
 
   @override
-  Widget build(BuildContext context) {
-    return JournalScaffold(
-      title: 'Journal Entries',
-      child: ListView(
-        children: [
-          ListTile(
-            leading: FlutterLogo(),
-            trailing: Icon(Icons.more_horiz),
-            title: Text('Journal Entry N'),
-            subtitle: Text('Example'),
-          )
-        ],
-      )
-    )
+  _JournalEntriesState createState() => _JournalEntriesState();
+}
+
+class _JournalEntriesState extends State<JournalEntries>{
 
 
-
-
-
+  @override
+  Widget build(BuildContext context){
+    return Placeholder();
   }
-
 }

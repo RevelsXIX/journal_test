@@ -1,10 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'screens/welcome.dart';
+import 'screens/new_entry.dart';
+import 'screens/journal_entries.dart';
 
 class App extends StatefulWidget {
 
-  final SharedPreferences preferences;
+  static final routes = {
+    WelcomeScreen.routeName: (context) => WelcomeScreen(),
+    NewEntry.routeName: (context) => NewEntry(),
+    JournalEntries.routeName: (context) => JournalEntries()
+
+
+  };
+
+
+final SharedPreferences preferences;
 
   App({Key? key, required this.preferences}) : super(key: key);
 
@@ -28,6 +39,11 @@ class _AppState extends State<App> {
 
   @override
   Widget build(BuildContext context) {
+
+    // static final routes = {
+    //   NewEntry.routeName: (context) => NewEntry();
+    //
+    // };
 
 
     return MaterialApp(
