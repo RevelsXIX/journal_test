@@ -1,15 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:journal_test/widgets/switch_widget.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 
 class CustomDrawer extends StatefulWidget {
 
-  // @override
-  // Size get preferredSize => Size.fromHeight(60.0);
+  final darkMode;
+  final toggleTheme;
 
-  // CustomAppBar(
-  //     {required this.text});
-  // final String text;
+  const CustomDrawer({Key? key, this.darkMode, this.toggleTheme}) : super(key: key);
 
   @override
   State<CustomDrawer> createState() => _CustomDrawerState();
@@ -18,38 +16,28 @@ class CustomDrawer extends StatefulWidget {
 class _CustomDrawerState extends State<CustomDrawer> {
 
 
-
   @override
   Widget build(BuildContext context) {
     return Drawer(
       // Add a ListView to the drawer. This ensures the user can scroll
       // through the options in the drawer if there isn't enough vertical
       // space to fit everything.
-      child: ListView(
-        // Important: Remove any padding from the ListView.
-        padding: EdgeInsets.zero,
-        children: [
-          Container(
-            height: 100.0,
-            child: DrawerHeader(
-              child: Text("Settings")
-            ),
-          ),
-        Padding(
-          padding: EdgeInsets.all(16.0),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-
-              Text(
-                'Dark Mode'
+        child: ListView(
+          // Important: Remove any padding from the ListView.
+            padding: EdgeInsets.zero,
+            children: <Widget>[
+              DrawerHeader(
+                  child: Text(
+                      'Settings'
+                  )
               ),
-              CustomSwitch()
-            ],
-          )
-          )
-        ],
-      ),
+              SwitchListTile(
+                  title: Text('Dark Mode'),
+                  value: widget.darkMode ?? false,
+                  onChanged: widget.toggleTheme ?? false)
+                  // onChanged: () {},
+            ]
+        )
     );
   }
 }

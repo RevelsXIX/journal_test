@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:journal_test/widgets/custom_appbar.dart';
-import 'package:journal_test/widgets/drawer_widget.dart';
 
 
 class WelcomeScreen extends StatefulWidget {
 
-  const WelcomeScreen({Key? key}) : super(key: key);
+  final darkMode;
+  final toggleTheme;
+
+  const WelcomeScreen({Key? key, this.darkMode, this.toggleTheme}) : super(key: key);
 
 
   @override
@@ -15,10 +17,20 @@ class WelcomeScreen extends StatefulWidget {
 
 class _WelcomeScreenState extends State<WelcomeScreen>{
 
+  @override
+  void initState() {
+    super.initState();
+    // getUserData();
+  }
+
+
+  _WelcomeScreenState();
+
+  // DocumentSnapshot userData;
+
+  // final DatabaseManager db = DatabaseManager();
 
   static const String title = "Josh's Journal";
-  //
-  // CustomAppBar.setPageTitle(title);
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +38,27 @@ class _WelcomeScreenState extends State<WelcomeScreen>{
       appBar: CustomAppBar(
         text: title,
       ),
-      endDrawer: CustomDrawer(),
+      endDrawer: Drawer(
+
+          child: ListView(
+              padding: EdgeInsets.zero,
+              children: <Widget>[
+            Container(
+            height: 100.0,
+            child: DrawerHeader(
+                child: Text('Settings'),
+                margin: EdgeInsets.all(5.0),
+                padding: EdgeInsets.all(5.0)
+            ),
+          ),
+                SwitchListTile(
+                    title: Text('Dark Mode'),
+                    value: widget.darkMode,
+                    onChanged: widget.toggleTheme)
+                // onChanged: () {},
+              ]
+          )
+      ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
