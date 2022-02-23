@@ -6,13 +6,7 @@ import 'screens/journal_entries.dart';
 
 class App extends StatefulWidget {
 
-  static final routes = {
-    WelcomeScreen.routeName: (context) => WelcomeScreen(),
-    NewEntry.routeName: (context) => NewEntry(),
-    JournalEntries.routeName: (context) => JournalEntries()
 
-
-  };
 
 
 final SharedPreferences preferences;
@@ -40,10 +34,14 @@ class _AppState extends State<App> {
   @override
   Widget build(BuildContext context) {
 
-    // static final routes = {
-    //   NewEntry.routeName: (context) => NewEntry();
-    //
-    // };
+    final routes = {
+      WelcomeScreen.routeName: (context) =>
+          WelcomeScreen(darkMode: darkMode, toggleTheme: toggleTheme),
+      NewEntry.routeName: (context) =>
+          NewEntry(darkMode: darkMode, toggleTheme: toggleTheme),
+      JournalEntries.routeName: (context) =>
+          JournalEntries(darkMode: darkMode, toggleTheme: toggleTheme)
+    };
 
 
     return MaterialApp(
@@ -52,7 +50,8 @@ class _AppState extends State<App> {
         // themeMode: ThemeMode.system,
         theme: darkMode ? ThemeData.dark() : ThemeData.light(),
         // darkTheme: MyThemes.darkTheme,
-        home: WelcomeScreen(darkMode: darkMode, toggleTheme: toggleTheme)
+        // home: WelcomeScreen(darkMode: darkMode, toggleTheme: toggleTheme)
+        routes: routes,
     );
   }
 

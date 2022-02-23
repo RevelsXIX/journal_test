@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:journal_test/widgets/custom_appbar.dart';
+import 'new_entry.dart';
+import 'journal_entries.dart';
 
 
 class WelcomeScreen extends StatefulWidget {
@@ -84,12 +86,16 @@ class _WelcomeScreenState extends State<WelcomeScreen>{
         )
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: () {createNewEntry();},
         child: Icon(Icons.add)
       ),
     );
-  }
+  } // Build
 
+
+  void createNewEntry() {
+    Navigator.of(context).pushNamed(NewEntry.routeName);
+  }
 
 
 
