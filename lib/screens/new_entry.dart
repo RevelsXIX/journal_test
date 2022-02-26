@@ -44,7 +44,6 @@ class _NewEntryState extends State<NewEntry>{
                       title: Text('Dark Mode'),
                       value: widget.darkMode,
                       onChanged: widget.toggleTheme)
-                  // onChanged: () {},
                 ]
             )
         ),

@@ -13,7 +13,6 @@ class JournalEntries extends StatefulWidget {
   final darkMode;
   final toggleTheme;
 
-  // late Journal journal;
 
 
   JournalEntries({Key? key, this.darkMode, this.toggleTheme}) : super(key: key);
@@ -87,10 +86,17 @@ Widget journalList (BuildContext context){
 }
 
 Widget buildEntry(JournalEntry entry) {
-    return ListTile(
+  return ListTile(
       title: Text(entry.title!),
       subtitle: Text(entry.dateTime),
-    );
+      onTap: () {
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) => EntryView(entryList: entry),
+            )
+        );
+      });
 }
 
 Widget addEntryFab(BuildContext context) {
@@ -124,5 +130,48 @@ Widget entryEndDrawer(BuildContext context) {
     );
 }
 
+
+}
+
+class EntryView extends StatefulWidget {
+
+  final darkMode;
+  final toggleTheme;
+
+  final JournalEntry entryList;
+
+  const EntryView({Key? key, required this.entryList,
+    this.darkMode, this.toggleTheme}) : super(key: key);
+
+  @override
+  State<EntryView> createState() => _EntryViewState();
+}
+
+class _EntryViewState extends State<EntryView> {
+
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+          title: Text(widget.entryList.dateTime),
+          leading: BackButton(),
+      ),
+      endDrawer: Drawer(),
+      body: Column(
+        children: [
+          Padding(
+              padding: EdgeInsets.all(16.0),
+              child: Text(widget.entryList.title!)
+          ),
+          Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: Text(widget.entryList.body!)
+          )
+        ],
+
+      ),
+    );
+  }
 
 }

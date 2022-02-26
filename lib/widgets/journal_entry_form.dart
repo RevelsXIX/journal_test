@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:journal_test/screens/journal_entries.dart';
 import 'package:journal_test/widgets/custom_drop_down.dart';
-// import 'package:journal_test/db/database.dart';
 import 'package:journal_test/models/journal_entry_dto.dart';
 import 'package:sqflite/sqflite.dart';
 
@@ -16,11 +15,9 @@ class JournalEntryForm extends StatefulWidget {
 }
 
 class _JournalEntryFormState extends State<JournalEntryForm> {
-  // const JournalEntryForm({Key? key}) : super(key: key);
 
   final formKey = GlobalKey<FormState>();
   final journalEntryValues = JournalEntryDTO();
-  // late final Journal journal;
 
   @override
   Widget build(BuildContext context) {
@@ -106,11 +103,9 @@ class _JournalEntryFormState extends State<JournalEntryForm> {
                           );
                         });
                         await database.close();
-                        Navigator.pushNamedAndRemoveUntil(
+                        Navigator.pushNamed(
                             context,
-                            JournalEntries.routeName,
-                                (route) => false);
-                            // .then((entry) => setState(() {}));
+                            JournalEntries.routeName);
                       }
                       }
                 )
