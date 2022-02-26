@@ -6,7 +6,7 @@ class CustomAppBar extends StatefulWidget implements PreferredSizeWidget {
   Size get preferredSize => Size.fromHeight(60.0);
 
   CustomAppBar(
-  {required this.text});
+  {Key? key, required this.text}) : super(key: key);
   final String text;
 
   @override
@@ -21,16 +21,5 @@ class _CustomAppBarState extends State<CustomAppBar> {
   Widget build(BuildContext context) {
     return AppBar(
         title: Text(widget.text));
-        // actions: <Widget>[
-        //   IconButton(
-        //     icon: Icon(
-        //       Icons.settings,
-        //       color: Colors.white,
-        //     ),
-        //     onPressed: () {
-        //       // do something
-        //     },
-        //   )
-        // ]);
   }
 }

@@ -9,11 +9,6 @@ class JournalEntryForm extends StatefulWidget {
 
   const JournalEntryForm({Key? key}) : super(key: key);
 
-
-  // final Journal journal;
-
-  // JournalEntryForm({Key? key, required this.journal}) : super(key: key);
-
   @override
   _JournalEntryFormState createState() => _JournalEntryFormState();
 }
@@ -89,32 +84,29 @@ class _JournalEntryFormState extends State<JournalEntryForm> {
               )
               ),
               Padding(padding: const EdgeInsets.all(5),
-              child: ElevatedButton(
-                  child: Text('Save'),
-                  onPressed: () async {
-                if (formKey.currentState!.validate()){
-                  formKey.currentState!.save();
-                  addDateToJournalEntryValues();
-                  final databaseManager = DatabaseManager.getInstance();
-                  databaseManager.saveJournalEntry(dto: journalEntryValues);
-                  Navigator.pushNamed(
-                      context,
-                      JournalEntries.routeName)
-                  .then((entry) => setState(() {}));
-                    // Navigator.of(context).pop();
-                }
-              },
-
-              )
+                child: ElevatedButton(
+                    child: Text('Save'),
+                    onPressed: () async {
+                      if (formKey.currentState!.validate()){
+                        formKey.currentState!.save();
+                        addDateToJournalEntryValues();
+                        final databaseManager = DatabaseManager.getInstance();
+                        databaseManager.saveJournalEntry(dto: journalEntryValues);
+                        Navigator.pushNamed(
+                          context,
+                          JournalEntries.routeName)
+                          .then((entry) => setState(() {}));
+                      }
+                    },
+                )
               )
             ],
           )
-
         ]
       ),
-     )
-    );
-  }
+    )
+  );
+}
 
   void addDateToJournalEntryValues() {
     journalEntryValues.dateTime = DateTime.now();

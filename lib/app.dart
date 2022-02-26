@@ -6,10 +6,7 @@ import 'screens/journal_entries.dart';
 
 class App extends StatefulWidget {
 
-
-
-
-final SharedPreferences preferences;
+  final SharedPreferences preferences;
 
   App({Key? key, required this.preferences}) : super(key: key);
 
@@ -29,8 +26,6 @@ class _AppState extends State<App> {
     });
   }
 
-
-
   @override
   Widget build(BuildContext context) {
 
@@ -46,15 +41,10 @@ class _AppState extends State<App> {
 
     return MaterialApp(
         title: 'My Journal',
-        // theme: ThemeData(primarySwatch: Colors.red),
-        // themeMode: ThemeMode.system,
         theme: darkMode ? ThemeData.dark() : ThemeData.light(),
-        // darkTheme: MyThemes.darkTheme,
-        // home: WelcomeScreen(darkMode: darkMode, toggleTheme: toggleTheme)
         routes: routes,
     );
   }
-
 }
 
 

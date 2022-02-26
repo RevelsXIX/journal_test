@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:journal_test/widgets/custom_appbar.dart';
-// import 'package:journal_test/models/journal.dart';
-
 
 class JournalScaffold extends StatefulWidget {
   final dynamic title;
@@ -24,7 +22,6 @@ class _JournalScaffoldState extends State<JournalScaffold> {
       ),
       body: widget.child,
       floatingActionButton: widget.fab,
-
     );
   }
 }

@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:journal_test/widgets/custom_appbar.dart';
 import 'package:journal_test/widgets/welcome_widget.dart';
 import 'new_entry.dart';
-// import 'journal_entries.dart';
-
 
 class WelcomeScreen extends StatefulWidget {
 
