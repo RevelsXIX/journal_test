@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:journal_test/widgets/custom_appbar.dart';
+import 'package:journal_test/widgets/welcome_widget.dart';
 import 'new_entry.dart';
-import 'journal_entries.dart';
+// import 'journal_entries.dart';
 
 
 class WelcomeScreen extends StatefulWidget {
@@ -63,28 +64,7 @@ class _WelcomeScreenState extends State<WelcomeScreen>{
               ]
           )
       ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-              Icon(
-                Icons.book,
-                color: Colors.black,
-                size: 80.0
-              )
-            ]),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text('Journal')
-              ],
-            )
-          ],
-        )
-      ),
+      body: WelcomeWidget(),
       floatingActionButton: FloatingActionButton(
         onPressed: () {createNewEntry();},
         child: Icon(Icons.add)

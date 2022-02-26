@@ -4,6 +4,11 @@ import 'package:flutter/material.dart';
 // class CustomDropDownButton extends StatefulWidget implements PreferredSizeWidget {
 class CustomDropDownButton extends StatefulWidget {
 
+  final onSaved;
+
+  const CustomDropDownButton({Key? key, required this.onSaved}) : super(key: key);
+
+
 
   @override
   State<CustomDropDownButton> createState() => _CustomDropDownButtonState();
@@ -28,7 +33,7 @@ class _CustomDropDownButtonState extends State<CustomDropDownButton> {
           setState(() {
             selectedValue = newValue!;
           });
-        }
+        },
       );
     }
   }
