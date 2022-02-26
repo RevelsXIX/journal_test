@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'screens/welcome.dart';
+// import 'screens/welcome.dart';
 import 'screens/new_entry.dart';
 import 'screens/journal_entries.dart';
 
@@ -30,8 +30,6 @@ class _AppState extends State<App> {
   Widget build(BuildContext context) {
 
     final routes = {
-      WelcomeScreen.routeName: (context) =>
-          WelcomeScreen(darkMode: darkMode, toggleTheme: toggleTheme),
       NewEntry.routeName: (context) =>
           NewEntry(darkMode: darkMode, toggleTheme: toggleTheme),
       JournalEntries.routeName: (context) =>

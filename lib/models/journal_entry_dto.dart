@@ -2,7 +2,7 @@
 class JournalEntryDTO {
   String? title;
   String? body;
-  DateTime? dateTime;
+  String? dateTime;
   int? rating;
 
   @override

@@ -9,4 +9,8 @@ class Journal {
   int get numberOfEntries => entries.length;
   List<JournalEntry> get getEntries => entries;
 
+  void addEntry(JournalEntry){
+    entries.add(JournalEntry);
+  }
+
 }

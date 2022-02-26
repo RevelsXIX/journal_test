@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:journal_test/widgets/journal_scaffold.dart';
 import 'package:journal_test/widgets/welcome_widget.dart';
+import 'package:sqflite/sqflite.dart';
+import 'package:journal_test/models/journal.dart';
 import 'new_entry.dart';
 import 'package:journal_test/models/journal_entry.dart';
-import 'package:journal_test/db/database.dart';
-import 'package:journal_test/models/journal.dart';
 
 class JournalEntries extends StatefulWidget {
 
-  static const routeName = 'journal_entries';
+  static const routeName = '/';
 
   final darkMode;
   final toggleTheme;
@@ -29,13 +29,24 @@ class _JournalEntriesState extends State<JournalEntries> {
   @override
   void initState() {
     super.initState();
-    Journal throwawayJournal;
     loadJournal();
   }
 
   void loadJournal() async {
-    final databaseManager = DatabaseManager.getInstance();
-    List<JournalEntry> journalEntries = await databaseManager.journalEntries();
+    final Database database = await openDatabase(
+      'journal.db', version: 1, onCreate: (Database db, int version) async {
+        await db.execute(
+          'CREATE TABLE IF NOT EXISTS journal_entries(id INTEGER PRIMARY KEY AUTOINCREMENT, title TEXT, body TEXT, rating INTEGER, dateTime TEXT)');
+      }
+    );
+    List<Map> journalRecords = await database.rawQuery('SELECT * FROM journal_entries');
+    final journalEntries = journalRecords.map((record) {
+      return JournalEntry(
+        title: record['title'],
+        body: record['body'],
+        rating: record['rating'],
+        dateTime: record['dateTime']);
+    }).toList();
     setState(() {
       journal = Journal(entries: journalEntries);
     });
@@ -47,12 +58,14 @@ class _JournalEntriesState extends State<JournalEntries> {
     if (journal == null) {
       return JournalScaffold(
           title: 'Loading',
-          child: Center(child: CircularProgressIndicator())
+          child: Center(child: CircularProgressIndicator()),
+          endDrawer: entryEndDrawer(context),
       );
     } else {
       return JournalScaffold(
         title: journal!.isEmpty ? 'Welcome' : 'Journal Entries',
-        child: journal!.isEmpty ? WelcomeWidget() : Placeholder(),
+        child: journal!.isEmpty ? WelcomeWidget() : journalList(context),
+        endDrawer: entryEndDrawer(context),
         fab: addEntryFab(context),
       );
     }
@@ -75,8 +88,8 @@ Widget journalList (BuildContext context){
 
 Widget buildEntry(JournalEntry entry) {
     return ListTile(
-      title: Text(entry.title),
-      // subtitle: DateTime(entry.dateTime),
+      title: Text(entry.title!),
+      subtitle: Text(entry.dateTime),
     );
 }
 
@@ -87,6 +100,29 @@ Widget addEntryFab(BuildContext context) {
     );
   }
 
+Widget entryEndDrawer(BuildContext context) {
+    return Drawer(
+        child: ListView(
+            padding: EdgeInsets.zero,
+            children: <Widget>[
+              Container(
+                height: 100.0,
+                child: DrawerHeader(
+                    child: Text('Settings'),
+                    margin: EdgeInsets.all(5.0),
+                    padding: EdgeInsets.all(5.0)
+                ),
+              ),
+              SwitchListTile(
+                  title: Text('Dark Mode'),
+                  value: widget.darkMode,
+                  onChanged: widget.toggleTheme)
+              // onChanged: () {},
+            ]
+        )
 
+    );
 }
 
+
+}
